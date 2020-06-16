@@ -8,7 +8,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="app">
-      <h1>Setup react redux</h1>
+        <h1>Setup react redux</h1>
       </div>
     </Provider>
   );

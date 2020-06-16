@@ -1,9 +1,9 @@
 const intialState = {
-    list:[]
+  list: []
 };
 export default (state = intialState, action) => {
-    switch(action.type){
-        default:
-            return state;
-    }
+  switch (action.type) {
+    default:
+      return state;
+  }
 };
