@@ -4,13 +4,14 @@ import { Provider } from 'react-redux';
 import './App.scss';
 import store from './redux/store';
 import Header from './components/header/Header';
+import Main from './components/main/Main';
 
 function App() {
   return (
     <Provider store={store}>
       <Header />
       <div className="app">
-        <h1>Setup react redux</h1>
+        <Main />
       </div>
     </Provider>
   );
