@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './MainContent.scss';
 import Slideshow from '../../slideshow/Slideshow';
+import Paginate from '../paginate/Paginate';
 
 function MainContent() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const paginate = (type) => {
+    if (type === 'prev' && currentPage >= 1) {
+      setCurrentPage((prev) => prev - 1);
+    } else {
+      setCurrentPage((prev) => prev + 1);
+    }
+  };
   const images = [
     {
       url: 'https://image.shutterstock.com/z/stock-photo-mountains-during-sunset-beautiful-natural-landscape-in-the-summer-time-407021107.jpg'
@@ -23,7 +33,9 @@ function MainContent() {
       <Slideshow images={images} auto={true} showArrows={true} />
       <div className="grid-movie-title">
         <div className="movieType">Now playing</div>
-        <div className="paginate">paginate</div>
+        <div className="paginate">
+          <Paginate currentPage={currentPage} totalPage={10} paginate={paginate} />
+        </div>
       </div>
       {/* display grid component */}
     </div>
