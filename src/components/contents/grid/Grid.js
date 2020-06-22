@@ -1,17 +1,17 @@
-import React, {useState, useEffect} from 'react';
-import {connect} from 'react-redux'
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Rating from '../rating/Rating';
-import {IMAGE_URL} from '../../../services/movie.service';
+import { IMAGE_URL } from '../../../services/movie.service';
 
 import './Grid.scss';
 
 const Grid = ({ list }) => {
-  const[movies, setMovies] = useState([]);
-  useEffect(()=>{
-    setMovies(list)
-  },[list])
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    setMovies(list);
+  }, [list]);
 
   return (
     <>
@@ -39,10 +39,10 @@ const Grid = ({ list }) => {
 };
 
 Grid.propTypes = {
-  images: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({
   list: state.movies.list
-})
+});
 export default connect(mapStateToProps)(Grid);

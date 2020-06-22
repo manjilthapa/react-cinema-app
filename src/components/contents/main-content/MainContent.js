@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import './MainContent.scss';
 import Slideshow from '../../slideshow/Slideshow';
 import Paginate from '../paginate/Paginate';
 import Grid from '../grid/Grid';
-import {IMAGE_URL} from '../../../services/movie.service'
+import { IMAGE_URL } from '../../../services/movie.service';
 
 function MainContent(props) {
-  const {list} = props;
+  const { list } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [images, setImages] = useState([]);
-  const randomMovies = list.sort(() => Math.random() - Math.random()).slice(0,4);
+  const randomMovies = list.sort(() => Math.random() - Math.random()).slice(0, 4);
 
   const paginate = (type) => {
     if (type === 'prev' && currentPage >= 1) {
@@ -40,9 +40,8 @@ function MainContent(props) {
     }
   ];
 
-
-  useEffect(()=>{
-    if(randomMovies.length){
+  useEffect(() => {
+    if (randomMovies.length) {
       const IMAGES = [
         {
           id: 1,
@@ -63,8 +62,7 @@ function MainContent(props) {
       ];
       setImages(IMAGES);
     }
-    
-  },[])
+  }, []);
 
   return (
     <div className="main-content">
@@ -82,9 +80,9 @@ function MainContent(props) {
 
 MainContent.propTypes = {
   list: PropTypes.array.isRequired
-}
+};
 
 const mapStateToProps = (state) => ({
   list: state.movies.list
-})
-export default connect(mapStateToProps,{})(MainContent);
+});
+export default connect(mapStateToProps, {})(MainContent);

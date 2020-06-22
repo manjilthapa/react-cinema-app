@@ -8,14 +8,10 @@ const Main = () => {
   useEffect(() => {
     setLoading(true);
     setTimeout(() => {
-      setLoading(false)
-    }, 3000)
-  }, [])
-  return (
-    <div className="main">
-      { loading ? <Spinner/> : <MainContent />}
-    </div>
-  );
-}
+      setLoading(false);
+    }, 3000);
+  }, []);
+  return <div className="main">{loading ? <Spinner /> : <MainContent />}</div>;
+};
 
 export default Main;
