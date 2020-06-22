@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Main.scss';
 import MainContent from '../contents/main-content/MainContent';
+import Spinner from '../spinner/Spinner';
 
-function Main() {
+const Main = () => {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false)
+    }, 3000)
+  }, [])
   return (
     <div className="main">
-      <MainContent />
+      { loading ? <Spinner/> : <MainContent />}
     </div>
   );
 }
