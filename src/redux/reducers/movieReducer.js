@@ -1,4 +1,4 @@
-import { MOVIE_LIST, PAGE_RESPONSE } from '../types';
+import { MOVIE_LIST, PAGE_RESPONSE, LOAD_MORE_MOVIE_LIST } from '../types';
 
 const intialState = {
   list: [],
@@ -17,6 +17,11 @@ export default (state = intialState, action) => {
         ...state,
         page: action.payload.page,
         totalPages: action.payload.totalPages
+      };
+    case LOAD_MORE_MOVIE_LIST:
+      return {
+        ...state,
+        list: [...state.list, ...action.payload]
       };
     default:
       return state;
