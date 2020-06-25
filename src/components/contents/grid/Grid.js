@@ -6,6 +6,7 @@ import Rating from '../rating/Rating';
 import { IMAGE_URL } from '../../../services/movie.service';
 
 import './Grid.scss';
+import LazyImages from '../../lazy-images/LazyImages';
 
 const Grid = ({ list }) => {
   const [movies, setMovies] = useState([]);
@@ -18,7 +19,11 @@ const Grid = ({ list }) => {
       <div className="grid">
         {movies.map((movie, i) => (
           <div key={i}>
-            <div className="grid-cell" style={{ backgroundImage: `url(${IMAGE_URL}${movie.poster_path})` }}>
+            <LazyImages 
+              className="grid-cell" 
+              src={`${IMAGE_URL}${movie.poster_path}`} 
+              alt="placeholder"
+            >
               <div className="grid-read-more">
                 <button className="grid-cell-button">Read more</button>
               </div>
@@ -30,7 +35,7 @@ const Grid = ({ list }) => {
                   <div className="grid-vote-average">{movie.vote_average}</div>
                 </div>
               </div>
-            </div>
+            </LazyImages>
           </div>
         ))}
       </div>
